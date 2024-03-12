@@ -28,6 +28,10 @@ export class AppComponent implements OnInit {
       gender: new FormControl('male'),
       hobbies: new FormArray([]),
     });
+
+    // this.form.valueChanges.subscribe((value) => console.log(value));
+
+    this.form.statusChanges.subscribe((status) => console.log(status));
   }
 
   onSubmit() {
