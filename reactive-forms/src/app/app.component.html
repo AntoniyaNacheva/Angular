@@ -17,8 +17,15 @@
                 form.get('userData.username').touched
               "
               class="help-block"
-              >Please enter a valid username!</span
             >
+              <span
+                *ngIf="form.get('userData.username').errors['nameIsForbidden']"
+                >This name is invalid!</span
+              >
+              <span *ngIf="form.get('userData.username').errors['required']"
+                >This field is required!</span
+              >
+            </span>
           </div>
           <div class="form-group">
             <label for="email">Email</label>
@@ -52,10 +59,7 @@
           </button>
           <div
             class="form-group"
-            *ngFor="
-              let hobbyControl of controls;
-              let i = index
-            "
+            *ngFor="let hobbyControl of controls; let i = index"
           >
             <input type="text" class="form-control" [formControlName]="i" />
           </div>
